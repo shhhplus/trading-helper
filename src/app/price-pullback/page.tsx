@@ -112,7 +112,7 @@ export default function PricePullback() {
           </Form>
         </>
       )}
-      <Footer label="没有更多了" content="@ All rights reserved"></Footer>
+      <Footer content="@ All rights reserved"></Footer>
     </>
   );
 }
