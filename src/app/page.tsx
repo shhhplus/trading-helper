@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <NavBar backArrow={false}>Trading helper</NavBar>
-      <List mode="card" header="全部功能">
+      <List mode="card">
         <List.Item onClick={() => {}}>TODO 1</List.Item>
         <List.Item onClick={() => {}}>TODO 2</List.Item>
         <List.Item onClick={() => {}}>TODO 3</List.Item>

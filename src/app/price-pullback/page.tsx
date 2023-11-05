@@ -39,6 +39,12 @@ export default function PricePullback() {
     <>
       <NavBar backArrow={false}>价格回落</NavBar>
       <Form
+        mode="card"
+        initialValues={{
+          basePrice: '10.00',
+          maxPpts: '10',
+          sellPpts: '8',
+        }}
         onFinish={onFinish}
         footer={
           <Button block type="submit" color="primary" size="large">
