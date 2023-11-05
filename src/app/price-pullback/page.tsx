@@ -9,6 +9,10 @@ type Result = {
   output: ReturnType<typeof utils.calc>;
 };
 
+function FloatNumber(props: { children: number }) {
+  return props.children.toFixed(2);
+}
+
 export default function PricePullback() {
   const [result, setResult] = useState<Result>();
 
@@ -41,7 +45,7 @@ export default function PricePullback() {
       <Form
         mode="card"
         initialValues={{
-          basePrice: '10.00',
+          basePrice: '10',
           maxPpts: '10',
           sellPpts: '8',
         }}
@@ -67,34 +71,43 @@ export default function PricePullback() {
           <Divider>输入</Divider>
           <Form layout="horizontal" mode="card">
             <Form.Item label="基准价">
-              {result.input.basePrice / 100} 元
+              <FloatNumber>{result.input.basePrice / 100}</FloatNumber> 元
             </Form.Item>
-            <Form.Item label="最高价涨幅 ">{result.input.maxPpts}%</Form.Item>
-            <Form.Item label="卖出价涨幅">{result.input.sellPpts}%</Form.Item>
+            <Form.Item label="最高价涨幅 ">
+              <FloatNumber>{result.input.maxPpts}</FloatNumber>%
+            </Form.Item>
+            <Form.Item label="卖出价涨幅">
+              <FloatNumber>{result.input.sellPpts}</FloatNumber>%
+            </Form.Item>
           </Form>
 
           <Divider>最高价</Divider>
           <Form layout="horizontal" mode="card">
             <Form.Item label="实际最高价">
-              {result.output.max.price / 100} 元 ({result.output.max.ppts}%)
+              <FloatNumber>{result.output.max.price / 100}</FloatNumber> 元 (
+              <FloatNumber>{result.output.max.ppts}</FloatNumber>%)
             </Form.Item>
             <Form.Item label="实际卖出价">
-              {result.output.sell.price / 100} 元 ({result.output.sell.ppts}%)
+              <FloatNumber>{result.output.sell.price / 100}</FloatNumber> 元 (
+              <FloatNumber>{result.output.sell.ppts}</FloatNumber>%)
             </Form.Item>
-            <Form.Item label="回撤">{result.output.pullbackToMax}%</Form.Item>
+            <Form.Item label="回撤">
+              <FloatNumber>{result.output.pullbackToMax}</FloatNumber>%
+            </Form.Item>
           </Form>
 
           <Divider>最高价-1</Divider>
           <Form layout="horizontal" mode="card">
             <Form.Item label="实际最高价-1">
-              {result.output.maxMinus1.price / 100} 元 (
-              {result.output.maxMinus1.ppts}%)
+              <FloatNumber>{result.output.maxMinus1.price / 100}</FloatNumber>{' '}
+              元 (<FloatNumber>{result.output.maxMinus1.ppts}</FloatNumber>%)
             </Form.Item>
             <Form.Item label="实际卖出价">
-              {result.output.sell.price / 100} 元 ({result.output.sell.ppts}%)
+              <FloatNumber>{result.output.sell.price / 100}</FloatNumber> 元 (
+              <FloatNumber>{result.output.sell.ppts}</FloatNumber>%)
             </Form.Item>
             <Form.Item label="回撤">
-              {result.output.pullbackToMaxMinus1}%
+              <FloatNumber>{result.output.pullbackToMaxMinus1}</FloatNumber>%
             </Form.Item>
           </Form>
         </>
