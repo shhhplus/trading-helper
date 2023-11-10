@@ -27,7 +27,7 @@ export default function PricePullback() {
       return;
     }
     const params = {
-      basePrice: Math.floor(parseFloat(values.basePrice) * 100),
+      basePrice: Math.round(parseFloat(values.basePrice) * 100),
       maxPpts: parseInt(values.maxPpts),
       sellPpts: parseInt(values.sellPpts),
     };
